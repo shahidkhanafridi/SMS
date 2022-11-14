@@ -1,5 +1,6 @@
 global using SMSApi.DAL.Contexts;
 global using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,7 @@ builder.Services.AddSwaggerGen();
 
 #region EF
 builder.Services.AddDbContext<SmsDbContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConn"), b => b.MigrationsAssembly("SMSApi.DAL")));
+builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<SmsDbContext>();
 #endregion
 
 var app = builder.Build();

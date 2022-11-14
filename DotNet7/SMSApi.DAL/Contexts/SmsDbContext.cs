@@ -5,10 +5,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace SMSApi.DAL.Contexts
 {
-    public class SmsDbContext : DbContext
+    public class SmsDbContext : IdentityDbContext<IdentityUser>
     {
         public SmsDbContext(DbContextOptions<SmsDbContext> options) : base(options)
         {
