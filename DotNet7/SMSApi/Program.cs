@@ -14,6 +14,7 @@ builder.Services.AddSwaggerGen();
 #region EF
 builder.Services.AddDbContext<SmsDbContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConn"), b => b.MigrationsAssembly("SMSApi.DAL")));
 builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<SmsDbContext>();
+builder.Services.AddDbContext<SmsDbContext>(opt => opt.EnableSensitiveDataLogging());
 #endregion
 
 var app = builder.Build();
